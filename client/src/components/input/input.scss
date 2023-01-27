@@ -1,0 +1,44 @@
+@mixin adaptiv-font($pcSize, $mobSize) {
+  $maxWidth: 2560;
+  $addSize: $pcSize - $mobSize;
+  $maxWidth: $maxWidth - 320;
+  font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+}
+
+.input-wrapper {
+  width: 100%;
+  display: flex;
+  gap: 0.1em;
+  position: relative;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: inherit;
+
+  input {
+    padding: 0.7em;
+    width: 100%;
+    cursor: pointer;
+    outline: 0.1em solid black;
+    border-radius: 1em;
+    border: none;
+    font-size: inherit;
+
+    &:focus {
+      outline-width: 0.15em;
+    }
+
+    &.has-error {
+      outline-color: #f11919;
+    }
+  }
+
+  .error-message {
+    width: 100%;
+    position: absolute;
+    bottom: -1.5em;
+    left: 0;
+    color: #f11919;
+    font-size: 0.8em;
+  }
+}
+

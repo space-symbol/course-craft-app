@@ -1,0 +1,43 @@
+.form-container {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 30%;
+  gap: 2em;
+}
+.form-container form .inputs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  justify-content: center;
+  font-size: inherit;
+}
+.form-container p {
+  width: 30%;
+  font-size: 1em;
+}
+.form-container p a {
+  font-size: inherit;
+}
+
+@media screen and (max-width: 630px) {
+  .form-container form {
+    font-size: 1.5em;
+    width: 70%;
+  }
+  .form-container p {
+    width: 70%;
+    font-size: 1.5em;
+  }
+}
+
+/*# sourceMappingURL=form.css.map */

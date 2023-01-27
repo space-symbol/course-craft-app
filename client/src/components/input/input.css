@@ -1,0 +1,34 @@
+.input-wrapper {
+  width: 100%;
+  display: flex;
+  gap: 0.1em;
+  position: relative;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: inherit;
+}
+.input-wrapper input {
+  padding: 0.7em;
+  width: 100%;
+  cursor: pointer;
+  outline: 0.1em solid black;
+  border-radius: 1em;
+  border: none;
+  font-size: inherit;
+}
+.input-wrapper input:focus {
+  outline-width: 0.15em;
+}
+.input-wrapper input.has-error {
+  outline-color: #f11919;
+}
+.input-wrapper .error-message {
+  width: 100%;
+  position: absolute;
+  bottom: -1.5em;
+  left: 0;
+  color: #f11919;
+  font-size: 0.8em;
+}
+
+/*# sourceMappingURL=input.css.map */

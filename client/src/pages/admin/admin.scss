@@ -1,0 +1,172 @@
+@keyframes card_emergence {
+  0% {
+    transform: translateY(-30%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.admin-container {
+  display: flex;
+  gap: 1.5em;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  .modal-container {
+    opacity: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.01);
+    position: fixed;
+    top: 0;
+    transition: 0.5s all ease;
+
+    .modal {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5em;
+      padding: 2em;
+      position: relative;
+      height: 80%;
+      width: 60%;
+      opacity: 0;
+      background-color: #ffffff;
+      border-radius: 1em;
+
+      &__title{
+        font-size: 1.5em;
+      }
+      form {
+        opacity: 0;
+        width: 100%;
+        display: grid;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+        grid-template-areas: "input1 input1"
+                             "input2 input2"
+                             "input3 input3"
+                             "button1 button2";
+
+        .input-wrapper {
+          &:first-child {
+            grid-area: input1;
+          }
+
+          &:nth-child(2) {
+            grid-area: input2;
+          }
+        }
+
+        .textarea-wrapper {
+          grid-area: input3;
+          }
+
+          .button-1 {
+            grid-area: button1;
+          }
+
+          .button-2 {
+            grid-area: button2;
+          }
+
+          .textarea-wrapper {
+            padding: 0.7em;
+            width: 100%;
+            outline: 0.1em solid #000000;
+            border-radius: 1em;
+
+            textarea {
+              width: 100%;
+              border: none;
+              height: 20em;
+              resize: none;
+            }
+          }
+
+        }
+      }
+
+    &.active .modal {
+      display: flex;
+      opacity: 1;
+    }
+
+    &.active{
+      form {
+        opacity: 1;
+      }
+    }
+  }
+
+  .active {
+    right: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    opacity: 1;
+  }
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 10em;
+    padding: 0 1.5em;
+
+    .search {
+      padding: 0;
+    }
+
+    .button{
+      white-space: nowrap;
+    }
+  }
+
+  .list-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    height: 100%;
+    width: 100%;
+    overflow-y: hidden;
+    padding: 2em 1.5em 0 1.5em;
+
+    .list {
+      display: flex;
+      padding: 1.65em;
+      flex-direction: column;
+      gap: 1em;
+      border: 0.1em solid #000000;
+      border-radius: 1em 0 0 1em;
+      overflow-y: auto;
+      border-right: none;
+
+      .card {
+        animation: card_emergence 0.7s ease forwards;
+      }
+
+      .button {
+        border-radius: 1em;
+      }
+    }
+
+    .category {
+      padding: 1.65em;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      border: 0.1em solid #000000;
+      border-radius: 0 1em 1em 0;
+      border-left: none;
+    }
+  }
+}

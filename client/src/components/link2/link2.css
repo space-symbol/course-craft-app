@@ -1,0 +1,20 @@
+.link {
+  position: relative;
+  text-decoration: none;
+}
+.link::after {
+  content: "";
+  display: block;
+  background-color: #000000;
+  height: 0.1em;
+  width: 0.001px;
+  position: absolute;
+  bottom: -0.1em;
+  left: 0;
+  transition: all 0.25s;
+}
+.link:hover:after {
+  width: 100%;
+}
+
+/*# sourceMappingURL=link2.css.map */

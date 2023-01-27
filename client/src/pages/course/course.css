@@ -1,0 +1,24 @@
+.course {
+  overflow: auto;
+  display: grid;
+  grid-template-columns: repeat(var(--repeat, auto-fit), minmax(300px, 1fr));
+  grid-auto-rows: minmax(min-content, max-content);
+  gap: 1.5em;
+  height: 100%;
+}
+.course__img {
+  width: 100%;
+}
+.course-about {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+}
+.course-about__title {
+  font-size: 1.5em;
+}
+.course-about__text {
+  font-size: 1.2em;
+}
+
+/*# sourceMappingURL=course.css.map */

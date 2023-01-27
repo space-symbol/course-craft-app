@@ -1,0 +1,29 @@
+@keyframes spinning {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+.spinner-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.spinner-wrapper .spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  height: 5em;
+  width: 5em;
+  border-radius: 50%;
+  background-color: #000;
+  -webkit-animation: spinning infinite 1s ease;
+  -o-animation: spinning infinite 1s ease;
+  animation: spinning infinite 1s ease;
+}
+
+/*# sourceMappingURL=spinner.css.map */

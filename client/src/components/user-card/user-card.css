@@ -1,0 +1,20 @@
+@keyframes user-card_emergence {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.user-card {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto auto;
+  align-items: start;
+  gap: 1em;
+  opacity: 0;
+  animation: user-card_emergence 0.7s ease forwards;
+}
+
+/*# sourceMappingURL=user-card.css.map */
