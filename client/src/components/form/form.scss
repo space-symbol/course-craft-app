@@ -1,0 +1,54 @@
+@mixin adaptiv-font($pcSize, $mobSize) {
+  $maxWidth: 2560;
+  $addSize: $pcSize - $mobSize;
+  $maxWidth: $maxWidth - 320;
+  font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+}
+
+.form-container {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+    gap: 2em;
+
+    .inputs-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2em;
+      justify-content: center;
+      font-size: inherit;
+
+    }
+  }
+  p{
+    width: 30%;
+    font-size: 1em;
+    a{
+      font-size: inherit;
+    }
+  }
+}
+
+@media screen and (max-width: 768px){
+  .form-container{
+    form {
+      font-size: 1.5em;
+      width: 70%;
+    }
+
+    p{
+      width: 70%;
+      font-size: 1.5em;
+    }
+  }
+}

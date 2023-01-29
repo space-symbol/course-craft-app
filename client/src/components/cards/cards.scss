@@ -1,0 +1,55 @@
+.cards-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+
+  .search{
+    padding: 0 1.5em;
+  }
+
+  .cards {
+    display: grid;
+    padding: 2em 1.5em 0.5em 1.5em;
+    grid-template-columns: repeat(var(--repeat, auto-fit), minmax(20em, 1fr));
+    grid-auto-rows: minmax(min-content, max-content);
+    gap: 1.5em;
+    height: 100%;
+    overflow-y: auto;
+    align-items: center;
+    justify-items: start;
+  }
+}
+
+
+@media screen and (min-width: 1300px) {
+  .cards {
+    --repeat: 3;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .cards-container {
+    .cards{
+      --repeat: 2;
+      padding: 0.5em 1em;
+    }
+    .search {
+      padding: 0 0.8em;
+      width: 75%;
+    }
+  }
+}
+
+@media screen and (max-width: 768px){
+  .cards-container{
+    .cards{
+      --repeat: 1;
+    }
+    .search{
+      font-size: 1.2em;
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+@keyframes user-card_emergence {
+  0%{
+    transform: translateY(-100%);
+  }
+  100%{
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.user-card {
+  display: grid;
+  grid-template-columns: 3.5em auto;
+  grid-template-areas: "email a";
+  align-items: start;
+  gap: 1em;
+  opacity: 0;
+  animation: user-card_emergence 0.7s ease forwards;
+  justify-items: start;
+  border-radius: 1em;
+  padding: 0.8em;
+  outline: 0.1em solid #000000;
+
+  .email{
+    grid-area: email;
+  }
+  a{
+    color: #000000;
+    text-decoration: underline;
+    grid-area: a;
+    word-break: break-all;
+    transition: 0.5s all ease;
+  }
+}

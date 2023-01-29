@@ -1,0 +1,80 @@
+@keyframes emergence {
+  0% {
+    left: -1em;
+    top: -1em;
+  }
+  100% {
+    top: 0;
+    left: 0;
+    opacity: 1;
+  }
+}
+.card {
+  opacity: 0;
+  height: 100%;
+  background-color: transparent;
+  position: relative;
+  cursor: pointer;
+  padding: 1em;
+  border: none;
+  outline: 0.1em solid #000000;
+  border-radius: 1em;
+  text-align: left;
+  animation: emergence forwards ease 0.7s;
+  transition: all ease-out 0.3s;
+  display: grid;
+  grid-template-columns: 30% auto;
+  grid-template-rows: auto auto;
+  grid-column-gap: 0.8em;
+  grid-row-gap: 1em;
+  justify-items: start;
+  align-items: start;
+  grid-template-areas: "img title" "img text";
+}
+.card:hover, .card:focus {
+  background-color: rgba(179, 248, 248, 0.75);
+  outline: 0.1em solid #5ED8D8;
+  box-shadow: 0.1em 0.1em 0.5em 0.08em rgb(196, 192, 192);
+  transform: translateX(-0.2em) translateY(0.2em);
+}
+.card:active {
+  transform: translateX(-0.1em) translateY(0.1em) scale(0.9);
+}
+.card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  grid-area: img;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  border-radius: 1em;
+}
+.card h2 {
+  display: flex;
+  align-self: end;
+  grid-area: title;
+  font-weight: bold;
+  font-size: calc(10px + 16 * ((100vw - 320px) / 2240));
+}
+.card p {
+  display: flex;
+  align-self: start;
+  grid-area: text;
+  font-weight: 300;
+  font-size: calc(8px + 14 * ((100vw - 320px) / 2240));
+}
+
+@media screen and (max-width: 320px) {
+  .card {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: "img" "title" "text";
+  }
+  .card__image {
+    justify-self: center;
+  }
+}
+
+/*# sourceMappingURL=card.css.map */
