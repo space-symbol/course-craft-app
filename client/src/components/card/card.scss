@@ -75,6 +75,8 @@
   p {
     display: flex;
     align-self: start;
+    flex-direction: column;
+    gap: 0.8em;
     grid-area: text;
     font-weight: 300;
     @include adaptiv-font(22, 8)

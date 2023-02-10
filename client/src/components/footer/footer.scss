@@ -5,17 +5,6 @@
   font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1.1);
-  }
-  50% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0.9);
-  }
-}
 
 @keyframes height {
   0% {
@@ -30,29 +19,31 @@ footer {
   display: flex;
   grid-area: footer;
   flex-direction: column;
-  align-items: center;
+  align-items: safe center;
   justify-content: space-between;
   position: relative;
   width: 5.3em;
   padding: 2.5em 0 1em;
+  gap: 0.8em;
+  overflow: auto;
 
   .navbar {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: safe center;
     justify-content: center;
     gap: 1em;
 
     ul {
       display: flex;
       gap: 0.8em;
-      align-items: center;
+      align-items: safe center;
       justify-content: center;
       list-style-type: none;
-      overflow-x: hidden;
       min-height: 3em;
-      width: 100%;
+      word-break: break-word;
+      padding: 0 0.5em;
     }
 
     &.mobile {
@@ -86,7 +77,7 @@ footer {
   .burger {
     cursor: pointer;
     display: flex;
-    align-items: center;
+    align-items: safe center;
     justify-content: center;
     position: relative;
     background-color: transparent;
@@ -156,45 +147,41 @@ footer {
     width: 100%;
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: safe center;
     flex-direction: column;
     justify-content: flex-end;
     gap: 0.5em;
     text-align: center;
 
-    &-stoleru, &-poplauhin {
+    &-people {
       display: flex;
       gap: 0.5em;
       flex-direction: column;
-      align-items: center;
+      align-items: safe center;
       justify-content: center;
-    }
 
-    &-title {
-      @include adaptiv-font(18, 7);
-    }
+      &__container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        align-items: safe center;
+        gap: 0.5em;
+        width: 40%;
+        flex-wrap: wrap;
 
-    &-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      justify-content: center;
-      align-items: center;
-      gap: 0.5em;
-      width: 40%;
-      flex-wrap: wrap;
+        a {
+          height: 1.4em;
+          width: 1.6em;
 
-      a {
-        height: 1.4em;
-        width: 1.6em;
+          img {
+            height: inherit;
+            width: inherit;
+            border: 0.1em solid #000000;
+            border-radius: 0.3em;
 
-        img {
-          height: inherit;
-          width: inherit;
-          border: 0.1em solid #000000;
-          border-radius: 0.3em;
-
-          &:active {
-            transform: scale(0.90);
+            &:active {
+              transform: scale(0.90);
+            }
           }
         }
       }
@@ -206,9 +193,9 @@ footer {
     position: absolute;
     right: 0;
     top: 0;
-    width: 0.05em;
+    width: 0.07em;
     background-color: #000;
-    animation: height forwards linear 0.5s;
+    animation: height forwards ease 1s;
   }
 }
 

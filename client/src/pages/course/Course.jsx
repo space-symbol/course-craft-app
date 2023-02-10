@@ -1,29 +1,68 @@
-import React from 'react';
-import Container from "../../components/container/Container";
+import React, {useContext, useEffect, useState} from 'react';
+import {useNavigate, useParams} from "react-router-dom";
 import "./course.css"
+import {deleteCourse, fetchCourse} from "../../http/coursesAPI";
+import {Context} from "../../index";
+import Button from "../../components/button/Button";
+import Spinner from "../../components/spinner/Spinner";
+import AdminModal from "../../components/admin-modal/AdminModal";
+import {observer} from "mobx-react-lite";
 
 
-const Course = () => {
-    const courses = {
-        id: 1,
-        img: "https://248006.selcdn.ru/LandGen/desktop_57c9d80b2b75745579f68b99bdd0e2c0516a955f.webp",
-        title: "Fullstack-разработчик на Java",
-        description: "Разрабатывать и поддерживать приложения на Spring.",
-        about: "Вы с нуля освоите востребованный язык программирования, научитесь создавать качественные приложения под разные платформы и станете ценным Java-специалистом уровня middle.",
-    }
+const Course = observer(() => {
+    const [course, setCourse] = useState({})
+    const [loading, setIsLoading] = useState(true)
+    const [modalIsActive, setModalIsActive] = useState(false)
+    const {user} = useContext(Context)
+    const navigate = useNavigate()
+    const {id} = useParams()
+    useEffect(() => {
+        fetchCourse(id).then(res => {
+            setCourse(res)
+            setIsLoading(false)
+        }).catch(e => {
+            console.log(e)
+        })
+    }, [])
+
     return (
-        <Container>
-            <div className="course">
-                <section className="course-about">
-                    <h1 className="course-about__title">{courses.title}</h1>
-                    <section className="course-about__text">
-                        {courses.about}
-                    </section>
+        <div className="course">
+            <main className="course-about">
+                <h1 className="course-about__name">{course.name}</h1>
+                <section className="course-about__text">
+                    {course.about}
                 </section>
-                <img className="course__img" src={courses.img} alt="img"/>
-            </div>
-        </Container>
+            </main>
+            {
+                loading ? <Spinner /> : <img className="course__img"
+                                             src={process.env.REACT_APP_API_URL + "courses/" + course?.img}
+                                             alt={`Картинка для курса ${course.name}`} />}
+            {
+                user._user.role === "ADMIN" && <>
+                    <Button attributes={{onClick: () => setModalIsActive(true)}} text={"Редактировать курс"} />,
+                    <Button attributes={{
+                        onClick: () => {
+                            deleteCourse(id).then(res => {
+                                navigate(-1)
+                            }).catch(e => console.log(e))
+                        }
+                    }} text="Удалить курс" />
+
+                    {
+                        !loading &&
+                        <AdminModal modalIsActive={modalIsActive}
+                                    setModalIsActive={setModalIsActive}
+                                    course={course}
+                                    setCourse={setCourse}
+                                    mode={"edit"}
+                                    id={id}
+                        />
+                    }
+                </>
+            }
+
+        </div>
     );
-};
+});
 
 export default Course;

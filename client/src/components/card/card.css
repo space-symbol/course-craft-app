@@ -61,6 +61,8 @@
 .card p {
   display: flex;
   align-self: start;
+  flex-direction: column;
+  gap: 0.8em;
   grid-area: text;
   font-weight: 300;
   font-size: calc(8px + 14 * ((100vw - 320px) / 2240));

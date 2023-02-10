@@ -37,7 +37,7 @@
   padding: 2em 1.5em 0 1.5em;
 }
 .admin-container .list-container .list {
-  display: flex;
+  display: grid;
   padding: 1.65em;
   flex-direction: column;
   gap: 1em;
@@ -45,6 +45,7 @@
   border-radius: 1em 0 0 1em;
   overflow-y: auto;
   border-right: none;
+  grid-template-rows: repeat(auto-fit, minmax(min-content, 33.3%));
 }
 .admin-container .list-container .list .card {
   animation: card_emergence 0.7s ease forwards;

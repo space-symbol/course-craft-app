@@ -4,10 +4,10 @@ import logo from '../../assets/logo.svg'
 import avatar from "../../assets/default-avatar.svg"
 import {Link, useNavigate} from "react-router-dom";
 import Button from "../button/Button";
-import {ADMIN_ROUTE, CARDS_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, USER_PROFILE_ROUTE} from "../../utils/consts";
+import {ADMIN_ROUTE, COURSES_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, USER_PROFILE_ROUTE} from "../../utils/consts";
 import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
-import CustomLink from "../link2/CustomLink";
+import CustomLink from "../custom-link/CustomLink";
 
 const Header = observer(() => {
     const {user} = useContext(Context)
@@ -18,36 +18,51 @@ const Header = observer(() => {
         user.setUser({})
         user.setIsAuth(false)
         localStorage.removeItem('token')
+        setIsActive(false)
         navigate(LOGIN_ROUTE)
     }
 
+    const links = [
+        {text: "Профиль", to: USER_PROFILE_ROUTE},
+        {text: "Настройки", to: USER_PROFILE_ROUTE},
+
+    ]
     return (
         <header className="header">
-            <Link className="header__logo" to={CARDS_ROUTE}>
+            <Link className="header__logo" to={COURSES_ROUTE}>
                 <img src={logo} alt="logo"/>
             </Link>
             <div className="header-container">
 
                 {
-                    user._user.role === "ADMIN" && (
+                    user.getUser().role === "ADMIN" && (
                         <Link className="button" to={ADMIN_ROUTE}>Админка</Link>
                     )
                 }
 
                 {
-                    user._isAuth ?
+                    user.getIsAuth() ?
                         <>
-                            <button className={`user ${isActive && "open"}`} onClick={() => setIsActive(!isActive)}>
-                                <img src={avatar} alt="avatar" title="Ваш аватар"/>
+                            <button className={`user ${isActive && "open"}`} onClick={(e) => {
+                                setIsActive(!isActive)
+                            }}>
+                                <img
+                                    src={user.getUser().avatar ? (process.env.REACT_APP_API_URL + "users/" + user.getUser().avatar) : avatar}
+                                    alt="avatar" title="Ваш аватар"/>
                             </button>
 
-                            <ul className={`user-menu ${isActive && "open"}`}>
-                                <div className="links">
-                                    <CustomLink text="Профиль" to={USER_PROFILE_ROUTE}/>
-                                    <CustomLink text="Настройки" to={USER_PROFILE_ROUTE}/>
-                                </div>
-                                <Button attributes={{onBlur: () => setIsActive(false),onClick: logOut}} text="Выйти"/>
-                            </ul>
+                            <div className={`user-menu-wrapper ${isActive && "open"}`}>
+                               <div className="user-menu-container">
+                                   <ul className="user-menu">
+                                       {
+                                           links.map((link, index) => {
+                                               return <CustomLink key={index} onClick={() => setIsActive(false)} text={link.text} to={link.to}/>
+                                           })
+                                       }
+                                   </ul>
+                                   <Button attributes={{onBlur: () => setIsActive(false), onClick: logOut}} text="Выйти"/>
+                               </div>
+                            </div>
                         </>
 
                         :
@@ -57,7 +72,6 @@ const Header = observer(() => {
                                     text="Зарегистрироваться"/>
                         </div>
                 }
-
 
             </div>
         </header>

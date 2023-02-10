@@ -6,11 +6,15 @@ import {useNavigate} from "react-router-dom"
 const Card = ({course, animationDelay}) => {
     const navigate = useNavigate()
     return (
-        <button style={{animationDelay: `${animationDelay}s`}} className="card"
+        <button style={{animationDelay: `${animationDelay}s`}} className="card button"
                 onClick={() => navigate(COURSE_ROUTE + '/' + course.id)}>
-            <img className="card__image" src={process.env.REACT_APP_API_URL + course.img} alt={`Аватарка курса ${course.name}`}/>
+            <img className="card__image"
+                 src={process.env.REACT_APP_API_URL + "courses/" + course.img}
+                 alt={`Аватарка курса ${course.name}`}/>
             <h2>{course.name}</h2>
-            <p>{course.description}</p>
+            <p>
+                {course.description}
+            </p>
         </button>
     );
 };

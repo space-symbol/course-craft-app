@@ -7,22 +7,23 @@
   }
 }
 .spinner-wrapper {
-  height: 100vh;
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: safe center;
+  grid-row: 2;
 }
 .spinner-wrapper .spinner {
   display: flex;
-  align-items: center;
+  align-items: safe center;
   justify-content: center;
-  color: #ffffff;
+  color: #000000;
   height: 5em;
   width: 5em;
+  border: 0.1em solid #000000;
   border-radius: 50%;
-  background-color: #000;
-  -webkit-animation: spinning infinite 1s ease;
-  -o-animation: spinning infinite 1s ease;
+  background-color: #ffffff;
   animation: spinning infinite 1s ease;
 }
 

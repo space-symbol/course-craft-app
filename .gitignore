@@ -1,6 +1,7 @@
 client/node_modules
 server/node_modules
 server/.env
-server/static/*.jpg
+server/static/courses/*.jpg
+server/static/users/*.jpg
 .tmp.driveupload
 .idea

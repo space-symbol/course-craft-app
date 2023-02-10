@@ -10,15 +10,16 @@ export default class UserStore{
     setIsAuth(bool){
         this._isAuth = bool
     }
+
+    getIsAuth() {
+        return this._isAuth
+    }
+
     setUser(user){
         this._user = user
     }
 
-    get isAuth() {
-        return this._isAuth
-    }
-
-    get user() {
+    getUser() {
         return this._user
     }
 }

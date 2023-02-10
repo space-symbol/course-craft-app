@@ -7,12 +7,15 @@
   font-size: calc(7px + 17 * ((100vw - 320px) / 2240));
 }
 
+#root, .app {
+  height: 100vh;
+}
+
 .app {
   display: grid;
-  grid-template-columns: 5.5em auto;
+  grid-template-columns: min-content auto;
   grid-template-rows: 5.3em auto;
-  grid-template-areas: "header header" "footer main" "footer main";
-  height: 100vh;
+  grid-template-areas: "header header" "footer main";
   width: 100%;
   overflow: hidden;
 }
@@ -62,7 +65,7 @@ img {
 .search {
   display: grid;
   grid-template-columns: 7fr 1fr;
-  align-items: center;
+  align-items: safe center;
   gap: 1.5em;
   width: 56%;
 }

@@ -1,6 +1,6 @@
 .modal-container {
   opacity: 0;
-  align-items: center;
+  align-items: safe center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.01);
   position: fixed;
@@ -33,7 +33,7 @@
   height: 100%;
   display: grid;
   grid-template-rows: min-content min-content auto min-content min-content;
-  align-items: start;
+  align-items: center;
   grid-area: form;
   gap: 2em;
   grid-template-areas: "input1 input1" "input2 input2" "input3 input3" "image image" "button1 button2";
@@ -51,9 +51,11 @@
   grid-area: input3;
 }
 .modal-container .modal form .button-1 {
+  width: 100%;
   grid-area: button1;
 }
 .modal-container .modal form .button-2 {
+  width: 100%;
   grid-area: button2;
 }
 .modal-container .modal form textarea {
@@ -88,4 +90,4 @@
   opacity: 1;
 }
 
-/*# sourceMappingURL=admin-form.css.map */
+/*# sourceMappingURL=admin-modal.css.map */

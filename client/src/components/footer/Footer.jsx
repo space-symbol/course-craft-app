@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import './footer.css'
 import vk from '../../assets/vk.svg'
 import telegram from '../../assets/telegram.svg'
-import {CARDS_ROUTE} from "../../utils/consts";
-import CustomLink from "../link2/CustomLink";
+import {COURSES_ROUTE} from "../../utils/consts";
+import CustomLink from "../custom-link/CustomLink";
 
 const Footer = () => {
     const [burgerIsActive, setBurgerIsActive] = useState(false)
@@ -18,10 +18,7 @@ const Footer = () => {
     }, [])
 
     const links = [
-        {
-            path: CARDS_ROUTE,
-            text: "Курсы"
-        },
+        {path: COURSES_ROUTE, text: "Курсы"},
     ]
 
     const resizeHandler = () => {
@@ -40,16 +37,13 @@ const Footer = () => {
         }
     }, [])
 
-    const activateBurger = (e) => {
-        setBurgerIsActive(!burgerIsActive)
-    }
-    return (
+      return (
         <footer>
             {
                 mobile &&
                 <button
                     className={`burger ${burgerIsActive && 'open'}`}
-                    onClick={activateBurger}
+                    onClick={() => setBurgerIsActive(!burgerIsActive)}
                 >
                     <span></span>
                     <span></span>
@@ -62,19 +56,20 @@ const Footer = () => {
                     {
                         links.map((link, index) => {
                             return (
-                                <CustomLink attributes={{onClick: activateBurger}}
-                                            key={index}
-                                            text={link.text}
-                                            to={link.path}/>
+                                <CustomLink
+                                    onClick={() => setBurgerIsActive(false)}
+                                    attributes={{tabIndex: !mobile || burgerIsActive ? '0' : '-1'}}
+                                    key={index}
+                                    text={link.text}
+                                    to={link.path}></CustomLink>
                             )
                         })}
                 </ul>
             </nav>
 
             <div className="contacts">
-                <div className="contacts-stoleru">
-                    <div className="contacts-title">Вадим</div>
-                    <div className="contacts-wrapper">
+                <div className="contacts-people">
+                    <div className="contacts-people__container">
                         <a rel="noreferrer" target="_blank" href="https://vk.com/s.vadim500">
                             <img src={vk} alt="vk" title="вконтакте"/>
                         </a>
@@ -83,9 +78,8 @@ const Footer = () => {
                         </a>
                     </div>
                 </div>
-                <div className="contacts-poplauhin">
-                    <div className="contacts-title">Дмитрий</div>
-                    <div className="contacts-wrapper">
+                <div className="contacts-people">
+                    <div className="contacts-people__container">
                         <a rel="noreferrer" target="_blank" href="https://vk.com/feral_ber">
                             <img src={vk} alt="vk" title="вконтакте"/>
                         </a>

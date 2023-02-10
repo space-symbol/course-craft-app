@@ -1,19 +1,20 @@
 import {
     ADMIN_ROUTE,
-    CARDS_ROUTE,
+    COURSES_ROUTE,
     LOGIN_ROUTE,
     REGISTRATION_ROUTE,
-    REG_TEST_ROUTE,
     USER_PROFILE_ROUTE,
     COURSE_ROUTE,
+    MAKE_COURSE_ROTE,
 } from "./utils/consts";
+
 import Admin from "./pages/admin/Admin";
 import Courses from "./pages/courses/Courses";
 import Registration from "./pages/registration/Registration";
 import Login from "./pages/login/Login";
-import RegTest from "./pages/reg-test/reg-test";
 import Course from "./pages/course/Course";
 import Profile from "./pages/profile/Profile";
+import MakeCourse from "./pages/make-course/MakeCourse";
 
 export const authRoutes = [
     {
@@ -23,12 +24,16 @@ export const authRoutes = [
     {
         path: USER_PROFILE_ROUTE,
         Component: Profile
-    }
+    },
+    {
+        path: MAKE_COURSE_ROTE,
+        Component: MakeCourse
+    },
 ];
 
 export const publicRoutes = [
     {
-        path: CARDS_ROUTE,
+        path: COURSES_ROUTE,
         Component: Courses
     },
     {
@@ -43,8 +48,4 @@ export const publicRoutes = [
         path: LOGIN_ROUTE,
         Component: Login
     },
-    {
-        path: REG_TEST_ROUTE,
-        Component: RegTest
-    }
 ]

@@ -10,6 +10,10 @@ export default class CoursesStore {
         this._courses = courses
     }
 
+    setCourse(course) {
+        this._courses.push(course)
+    }
+
     getCourses() {
         return this._courses
     }

@@ -26,7 +26,7 @@
       padding: 0;
     }
 
-    .button{
+    .button {
       white-space: nowrap;
     }
   }
@@ -41,7 +41,7 @@
     padding: 2em 1.5em 0 1.5em;
 
     .list {
-      display: flex;
+      display: grid;
       padding: 1.65em;
       flex-direction: column;
       gap: 1em;
@@ -49,6 +49,7 @@
       border-radius: 1em 0 0 1em;
       overflow-y: auto;
       border-right: none;
+      grid-template-rows: repeat(auto-fit, minmax(min-content, 33.3%));
 
       .card {
         animation: card_emergence 0.7s ease forwards;
@@ -70,14 +71,15 @@
     }
   }
 }
-@media screen and (max-width: 768px){
-  .admin-container{
-    .search-container{
+
+@media screen and (max-width: 768px) {
+  .admin-container {
+    .search-container {
       padding: 0;
     }
-    .list-container{
+
+    .list-container {
       padding: 0;
     }
   }
-
 }

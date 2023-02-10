@@ -1,10 +1,10 @@
 import React from 'react';
-import './link2.css'
+import './custom-link.css'
 import {Link} from "react-router-dom";
 
-const CustomLink = ({attributes, text, to}) => {
+const CustomLink = ({attributes, onClick, text, to}) => {
     return (
-        <Link {...attributes} className="link" to={to}>{text}</Link>
+        <Link {...attributes} onClick={onClick} className="link" to={to}>{text}</Link>
     );
 };
 

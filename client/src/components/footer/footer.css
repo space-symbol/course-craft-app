@@ -1,14 +1,3 @@
-@keyframes pulse {
-  0% {
-    transform: scale(1.1);
-  }
-  50% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0.9);
-  }
-}
 @keyframes height {
   0% {
     height: 60px;
@@ -21,29 +10,31 @@ footer {
   display: flex;
   grid-area: footer;
   flex-direction: column;
-  align-items: center;
+  align-items: safe center;
   justify-content: space-between;
   position: relative;
   width: 5.3em;
   padding: 2.5em 0 1em;
+  gap: 0.8em;
+  overflow: auto;
 }
 footer .navbar {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: safe center;
   justify-content: center;
   gap: 1em;
 }
 footer .navbar ul {
   display: flex;
   gap: 0.8em;
-  align-items: center;
+  align-items: safe center;
   justify-content: center;
   list-style-type: none;
-  overflow-x: hidden;
   min-height: 3em;
-  width: 100%;
+  word-break: break-word;
+  padding: 0 0.5em;
 }
 footer .navbar.mobile {
   position: fixed;
@@ -70,7 +61,7 @@ footer .navbar.mobile.open {
 footer .burger {
   cursor: pointer;
   display: flex;
-  align-items: center;
+  align-items: safe center;
   justify-content: center;
   position: relative;
   background-color: transparent;
@@ -129,42 +120,39 @@ footer .contacts {
   width: 100%;
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: safe center;
   flex-direction: column;
   justify-content: flex-end;
   gap: 0.5em;
   text-align: center;
 }
-footer .contacts-stoleru, footer .contacts-poplauhin {
+footer .contacts-people {
   display: flex;
   gap: 0.5em;
   flex-direction: column;
-  align-items: center;
+  align-items: safe center;
   justify-content: center;
 }
-footer .contacts-title {
-  font-size: calc(7px + 11 * ((100vw - 320px) / 2240));
-}
-footer .contacts-wrapper {
+footer .contacts-people__container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
-  align-items: center;
+  align-items: safe center;
   gap: 0.5em;
   width: 40%;
   flex-wrap: wrap;
 }
-footer .contacts-wrapper a {
+footer .contacts-people__container a {
   height: 1.4em;
   width: 1.6em;
 }
-footer .contacts-wrapper a img {
+footer .contacts-people__container a img {
   height: inherit;
   width: inherit;
   border: 0.1em solid #000000;
   border-radius: 0.3em;
 }
-footer .contacts-wrapper a img:active {
+footer .contacts-people__container a img:active {
   transform: scale(0.9);
 }
 footer:after {
@@ -172,9 +160,9 @@ footer:after {
   position: absolute;
   right: 0;
   top: 0;
-  width: 0.05em;
+  width: 0.07em;
   background-color: #000;
-  animation: height forwards linear 0.5s;
+  animation: height forwards ease 1s;
 }
 
 @media screen and (max-width: 768px) {
